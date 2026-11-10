@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Harnoa Health: one-to-one personal training and nutrition coaching from a strength and conditioning coach and a nutrition coach. Choose a plan and pay online.">
+<link rel="preload" as="image" href="images/main-floor-1024.webp" imagesrcset="images/main-floor-640.webp 640w, images/main-floor-1024.webp 1024w" imagesizes="100vw">
+<title>Harnoa Health</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Sora:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: matches the onboarding page. Plain white masthead with the centred lowercase wordmark, calm white page with ruled, numbered sections, one black band for pricing, black footer. Single committed light look in the brand greys. */
+:root {
+  --stone: #5f5e5d;       /* brand grey (onboarding --green) */
+  --stone-deep: #4a4948;
+  --stone-tint: #efefee;
+  --white: #ffffff;
+  --black: #0b0d0c;
+  --grey: #5d6662;
+  --rule: #e2e6e4;
+  --rule-dark: rgba(255, 255, 255, 0.16);
+  --on-dark: rgba(255, 255, 255, 0.92);
+  --on-dark-muted: rgba(255, 255, 255, 0.62);
+  --display: "Sora", "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mark: Arial, "Arimo", "Helvetica Neue", Helvetica, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white); color: var(--black);
+  font-family: var(--body); font-size: 1rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.inner {
+  max-width: 68rem; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3, h4 { margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--stone); outline-offset: 3px; }
+
+/* Shared type */
+.label {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--stone);
+}
+.eyebrow {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.9rem; color: var(--stone);
+}
+.eyebrow::before { content: ""; width: 2rem; height: 1px; background: currentColor; }
+h2.title {
+  font-family: var(--display); font-weight: 500; letter-spacing: -0.03em; line-height: 1.1;
+  font-size: clamp(1.9rem, 4.6vw, 2.75rem);
+}
+h2.title em { font-style: normal; color: var(--stone); }
+.lede { color: var(--grey); font-size: 1.05rem; max-width: 34rem; }
+
+/* Wordmark */
+.wordmark { display: inline-flex; align-items: baseline; gap: 0.06em; font-family: var(--mark); line-height: 1; color: inherit; text-decoration: none; }
+.wordmark b { font-weight: 700; font-size: 1.6rem; letter-spacing: -0.02em; }
+.wordmark span { font-family: "Arial Nova Light", var(--mark); font-weight: 300; font-size: 1rem; letter-spacing: 0.01em; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+  font: 600 0.75rem/1 var(--body); letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
+  padding: 1rem 1.4rem; border-radius: 12px; border: 1px solid var(--black);
+  background: var(--black); color: var(--white); transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.btn:hover { background: var(--stone-deep); border-color: var(--stone-deep); }
+.btn svg { width: 0.9em; height: 0.9em; }
+.btn.light { background: var(--white); color: var(--black); border-color: var(--white); }
+.btn.light:hover { background: var(--stone-tint); border-color: var(--stone-tint); }
+.btn.outline { background: transparent; color: var(--white); border-color: rgba(255, 255, 255, 0.5); }
+.btn.outline:hover { border-color: var(--white); background: rgba(255, 255, 255, 0.08); }
+.btn.quiet { background: transparent; color: var(--black); border-color: var(--rule); }
+.btn.quiet:hover { border-color: var(--black); }
+
+/* Masthead: plain white, centred */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--white); }
+.masthead { background: var(--white); color: var(--black); }
+.masthead .inner { padding-block: 2rem clamp(2rem, 5vw, 3rem); display: flex; flex-direction: column; align-items: center; gap: clamp(3rem, 9vw, 5.5rem); text-align: center; }
+.topbar { display: flex; justify-content: center; }
+.masthead .wordmark b { font-size: 2.6rem; }
+.masthead .wordmark span { font-size: 1.62rem; }
+.hero { display: flex; flex-direction: column; align-items: center; gap: 1.4rem; max-width: 100%; }
+.hero h1 {
+  font-family: var(--display); font-weight: 500; letter-spacing: -0.035em; line-height: 1.05;
+  font-size: clamp(1.4rem, 6.4vw, 4.5rem); white-space: nowrap;
+}
+.hero h1 em { font-style: normal; color: var(--stone); }
+.hero .lede { color: var(--grey); max-width: 36rem; }
+.hero .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; margin-top: 0.6rem; }
+@media (max-width: 520px) { .masthead .wordmark b { font-size: 2.2rem; } .masthead .wordmark span { font-size: 1.38rem; } }
+
+.prices.one { grid-template-columns: minmax(0, 1fr); }
+.price.wide { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem 2.5rem; align-items: start; }
+.price.wide > div { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+@media (max-width: 760px) { .price.wide { grid-template-columns: minmax(0, 1fr); } }
+
+/* Sections */
+/* --sec: half the space between sections. Each Get started button sits 2 x --sec below its text and 2 x --sec above the next heading. */
+:root { --sec: clamp(1.5rem, 3.5vw, 2.25rem); }
+section.block .inner { padding-block: var(--sec); }
+section.block:has(+ .band) .inner { padding-bottom: calc(var(--sec) * 2); }
+.band + section.block .inner { padding-top: calc(var(--sec) * 2); }
+main > section.block:last-child .inner { padding-bottom: calc(var(--sec) * 3); }
+.head { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1rem; margin-bottom: clamp(2.25rem, 5vw, 3.5rem); }
+.head .lede { max-width: 36rem; }
+.head > div { display: flex; flex-direction: column; gap: 1rem; }
+@media (max-width: 760px) { .head { grid-template-columns: 1fr; } }
+
+/* About */
+.coaches { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); }
+.coach { display: flex; flex-direction: column; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--black); min-width: 0; }
+.coach h3 { font-family: var(--display); font-weight: 500; font-size: 1.5rem; letter-spacing: -0.02em; line-height: 1.25; }
+.coach .role { margin-top: -0.6rem; }
+.coach p { color: var(--grey); }
+.quals { list-style: none; margin: 0.4rem 0 0; padding: 0; }
+.quals li { display: flex; justify-content: space-between; gap: 1rem; padding-block: 0.7rem; border-top: 1px solid var(--rule); font-size: 0.95rem; }
+.quals li span:last-child { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); white-space: nowrap; align-self: center; }
+@media (max-width: 760px) { .coaches { grid-template-columns: 1fr; } }
+
+/* Services: ruled, numbered list like the onboarding steps */
+ol.services { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.service { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem 2.5rem; padding-block: 2rem; border-bottom: 1px solid var(--rule); }
+.num { font-family: var(--display); font-weight: 500; font-size: 1.3rem; line-height: 1.5; color: var(--stone); font-variant-numeric: lining-nums tabular-nums; }
+.service .what { display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.service h3 { font-family: var(--display); font-weight: 500; font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.3; }
+.service .what p { color: var(--grey); max-width: 30rem; }
+.service ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; align-content: start; font-size: 0.95rem; min-width: 0; }
+.service li { display: grid; grid-template-columns: 1.25rem 1fr; gap: 0.4rem; }
+.service li::before { content: ""; width: 0.55rem; height: 0.55rem; border-radius: 50%; border: 1px solid var(--stone); margin-top: 0.5rem; }
+@media (max-width: 760px) {
+  .service { grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.9rem; }
+  .service ul { grid-column: 2; }
+  .num { font-size: 1.1rem; }
+}
+
+/* Example session */
+.session { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.session .copy { display: flex; flex-direction: column; gap: 1rem; }
+.sheet { border: 1px solid var(--rule); border-radius: 16px; padding: clamp(1.25rem, 3vw, 1.75rem); min-width: 0; }
+.sheet-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--black); }
+.sheet-head h3 { font-family: var(--display); font-weight: 500; font-size: 1.15rem; letter-spacing: -0.01em; }
+.lifts { list-style: none; margin: 0; padding: 0; }
+.lifts li { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr) auto; gap: 0.75rem; align-items: baseline; padding-block: 0.85rem; border-bottom: 1px solid var(--rule); }
+.lifts .code { font-family: var(--display); font-size: 0.85rem; font-weight: 500; color: var(--stone); }
+.lifts .rx { font-size: 0.85rem; color: var(--grey); font-variant-numeric: tabular-nums; text-align: right; }
+.fuel { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.1rem; padding: 1rem; background: var(--stone-tint); border-radius: 12px; text-align: center; }
+.fuel b { display: block; font-family: var(--display); font-weight: 500; font-size: 1.35rem; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.fuel small { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); }
+@media (max-width: 820px) { .session { grid-template-columns: 1fr; } }
+
+/* Pricing band */
+.band { background: var(--black); color: var(--white); }
+.band .inner { padding-block: clamp(3rem, 7vw, 5rem); }
+.band .eyebrow, .band .label { color: var(--on-dark-muted); }
+.band h2.title em { color: rgba(255, 255, 255, 0.55); }
+.band .lede { color: rgba(255, 255, 255, 0.78); }
+.group + .group { margin-top: 3rem; }
+.group > .label { display: block; margin-bottom: 1rem; }
+.prices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.price { display: flex; flex-direction: column; gap: 1rem; padding: 1.6rem; border: 1px solid var(--rule-dark); border-radius: 16px; }
+.price.featured { background: var(--white); color: var(--black); border-color: var(--white); }
+.price-top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
+.price h4 { font-family: var(--display); font-weight: 500; font-size: 1.15rem; letter-spacing: -0.01em; }
+.pill { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; white-space: nowrap; color: var(--grey); }
+.amount { display: flex; align-items: baseline; gap: 0.45rem; font-variant-numeric: tabular-nums; }
+.amount b { font-family: var(--display); font-weight: 500; font-size: 2.6rem; letter-spacing: -0.04em; line-height: 1; }
+.amount span { font-size: 0.9rem; color: var(--on-dark-muted); }
+.price ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; font-size: 0.93rem; color: rgba(255, 255, 255, 0.85); flex: 1; }
+.price li { display: grid; grid-template-columns: 1.1rem 1fr; gap: 0.4rem; }
+.price li::before { content: ""; width: 0.5rem; height: 0.5rem; border-radius: 50%; background: currentColor; opacity: 0.55; margin-top: 0.5rem; }
+.per { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--on-dark-muted); padding-top: 0.9rem; border-top: 1px solid var(--rule-dark); }
+.price.featured .amount span, .price.featured .per { color: var(--grey); }
+.price.featured ul { color: var(--black); }
+.price.featured .per { border-top-color: var(--rule); }
+.fine { margin-top: 2rem; color: var(--on-dark-muted); font-size: 0.9rem; max-width: 46rem; }
+@media (max-width: 860px) { .prices { grid-template-columns: 1fr; } }
+
+/* Steps */
+ol.steps { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.step { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1.25rem; padding-block: 2rem; border-bottom: 1px solid var(--rule); }
+.step .body { display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; }
+.step h3 { font-family: var(--display); font-weight: 500; font-size: 1.35rem; letter-spacing: -0.02em; line-height: 1.3; }
+.step p { color: var(--grey); max-width: 38rem; }
+.step .btn { align-self: flex-start; margin-top: 0.5rem; }
+@media (max-width: 520px) { .step { grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.9rem; } }
+
+/* FAQ */
+.faq { border-top: 1px solid var(--rule); }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary {
+  cursor: pointer; list-style: none; padding-block: 1.4rem; display: flex; justify-content: space-between; gap: 1rem;
+  font-family: var(--display); font-weight: 500; font-size: 1.1rem; letter-spacing: -0.01em;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--stone); font-weight: 400; font-size: 1.3rem; line-height: 1.2; }
+.faq details[open] summary::after { content: "\2013"; }
+.faq details p { color: var(--grey); padding-bottom: 1.4rem; max-width: 42rem; }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.contact .copy { display: flex; flex-direction: column; gap: 1.1rem; }
+dl.details { margin: 0; border-top: 1px solid var(--black); }
+dl.details div { display: flex; justify-content: space-between; gap: 1rem; padding-block: 1rem; border-bottom: 1px solid var(--rule); }
+dl.details dt { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--stone); align-self: center; }
+dl.details dd { margin: 0; font-weight: 600; text-align: right; overflow-wrap: anywhere; }
+@media (max-width: 820px) { .contact { grid-template-columns: 1fr; } }
+
+footer { background: var(--black); color: var(--white); }
+footer .inner { padding-block: 2.25rem; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+footer small { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--on-dark-muted); }
+
+@media (max-width: 520px) {
+  .hero .ctas .btn { flex: 1 1 100%; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+/* Additions for the plans page: same tokens and type, new pieces */
+.pillars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(1.5rem, 4vw, 3rem); }
+.pillar { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1.25rem; padding-block: 1.75rem; border-top: 1px solid var(--rule); }
+.pillar .body { display: flex; flex-direction: column; gap: 0.5rem; min-width: 0; }
+.pillar h3 { font-family: var(--display); font-weight: 500; font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1.3; }
+.pillar p { color: var(--grey); }
+@media (max-width: 760px) { .pillars { grid-template-columns: 1fr; } .pillar { grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0.9rem; } }
+
+.helps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; font-size: 0.95rem; }
+.helps li { display: grid; grid-template-columns: 1.25rem 1fr; gap: 0.4rem; }
+.helps li::before { content: ""; width: 0.55rem; height: 0.55rem; border-radius: 50%; border: 1px solid var(--stone); margin-top: 0.5rem; }
+
+.week { list-style: none; margin: 1.25rem 0 0; padding: 0; border-top: 1px solid var(--black); }
+.week li { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1rem; padding-block: 0.9rem; border-bottom: 1px solid var(--rule); }
+.week li span:first-child { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); padding-top: 0.2rem; }
+@media (max-width: 420px) { .week li { grid-template-columns: 1fr; gap: 0.2rem; } }
+
+.price .btn { width: 100%; margin-top: 0.25rem; }
+.price:not(.featured) .btn { background: var(--white); color: var(--black); border-color: var(--white); }
+.price:not(.featured) .btn:hover { background: var(--stone-tint); border-color: var(--stone-tint); }
+.alt { font-size: 0.85rem; color: var(--on-dark-muted); text-align: center; margin-top: -0.4rem; }
+.price.featured .alt { color: var(--grey); }
+.assure { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.75rem; padding-top: 2rem; border-top: 1px solid var(--rule-dark); }
+.assure h3 { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.24em; text-transform: uppercase; color: var(--white); margin-bottom: 0.5rem; }
+.assure p { color: var(--on-dark-muted); font-size: 0.93rem; }
+@media (max-width: 760px) { .assure { grid-template-columns: 1fr; } }
+
+.closing { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+.closing .ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+footer .links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+footer .links a { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-dark-muted); text-decoration: none; }
+footer .links a:hover { color: var(--white); }
+footer .contact-line { width: 100%; font-size: 0.9rem; color: var(--on-dark-muted); padding-top: 1rem; border-top: 1px solid var(--rule-dark); }
+
+/* Three-column plans with session toggles */
+.prices.tri { align-items: stretch; }
+.prices.tri .price ul { align-content: start; }
+.seg-wrap { display: flex; flex-direction: column; gap: 0.5rem; min-height: 4.6rem; }
+.seg-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-dark-muted); }
+.seg-note { font-size: 0.9rem; color: rgba(255, 255, 255, 0.85); padding-block: 0.6rem; }
+.seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; border: 1px solid var(--rule-dark); border-radius: 12px; }
+.seg button {
+  font: 600 0.8rem/1 var(--body); letter-spacing: 0.08em; padding: 0.7rem 0.5rem; border: 0; border-radius: 9px;
+  background: transparent; color: var(--on-dark-muted); cursor: pointer; transition: background 0.2s ease, color 0.2s ease;
+}
+.seg button:hover { color: var(--white); }
+.seg button[aria-pressed="true"] { background: var(--white); color: var(--black); }
+.price.featured .seg-label { color: var(--grey); }
+.price.featured .seg { border-color: var(--rule); }
+.price.featured .seg button { color: var(--grey); }
+.price.featured .seg button:hover { color: var(--black); }
+.price.featured .seg button[aria-pressed="true"] { background: var(--black); color: var(--white); }
+.amount b { transition: opacity 0.15s ease; }
+.section-cta { display: flex; justify-content: center; margin-top: calc(var(--sec) * 2); }
+.closing { align-items: center; text-align: center; }
+.closing .eyebrow::after { content: ""; width: 2rem; height: 1px; background: currentColor; }
+.closing .ctas { justify-content: center; }
+@media (max-width: 520px) { .section-cta .btn { flex: 1 1 100%; } }
+
+/* Gym gallery */
+.carousel { position: relative; }
+.track {
+  display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  border-radius: 16px; background: var(--stone-tint); scrollbar-width: none;
+}
+.track::-webkit-scrollbar { display: none; }
+.slide { flex: 0 0 100%; margin: 0; scroll-snap-align: start; aspect-ratio: 1024 / 616; max-width: 100%; position: relative; }
+.slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.arrow {
+  position: absolute; top: calc(50% - 1.75rem); transform: translateY(-50%);
+  width: 3rem; height: 3rem; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--white); color: var(--black); display: grid; place-items: center;
+  box-shadow: 0 6px 20px -8px rgba(10, 10, 10, 0.5); transition: background 0.2s ease, opacity 0.2s ease;
+}
+.arrow:hover { background: var(--stone-tint); }
+.arrow:disabled { opacity: 0.35; cursor: default; }
+.arrow svg { width: 1.1rem; height: 1.1rem; }
+.arrow.prev { left: 1rem; }
+.arrow.next { right: 1rem; }
+.car-bar { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-top: 1rem; }
+.car-caption { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); }
+.car-count { font-size: 0.8rem; color: var(--grey); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.car-count b { color: var(--black); font-weight: 600; }
+@media (max-width: 520px) {
+  .arrow { width: 2.5rem; height: 2.5rem; top: calc(50% - 1.6rem); }
+  .arrow.prev { left: 0.6rem; } .arrow.next { right: 0.6rem; }
+}
+@media (prefers-reduced-motion: reduce) { .track { scroll-behavior: auto; } }
+.amount { flex-wrap: wrap; }
+.was { font-family: var(--display); font-size: 1.35rem; font-weight: 400; letter-spacing: -0.02em; color: var(--on-dark-muted); text-decoration-thickness: 2px; align-self: center; }
+.price.featured .was { color: var(--grey); }
+.save { margin-top: -0.5rem; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--white); }
+.price.featured .save { color: var(--black); }
+.save.is-none { visibility: hidden; }
+#faq .inner { padding-bottom: calc(var(--sec) * 2); }
+#faq + section.block .inner { padding-top: calc(var(--sec) * 2); }
+#gym .section-cta { margin-top: var(--sec); }
+/* Opening photos: soft blurred fade from the white, slow crossfade between gym photos */
+.hero-strip { position: relative; width: 100%; max-width: 80rem; margin-inline: auto; aspect-ratio: 1024 / 616; overflow: hidden; margin-bottom: calc(var(--sec) * 2); background: var(--white); }
+.hero-strip img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.6s ease; animation: drift 18s ease-in-out infinite alternate; }
+.hero-strip img.on { opacity: 1; }
+.hero-strip::before {
+  content: ""; position: absolute; inset: 0 0 auto; height: 50%; z-index: 1;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.94) 12%, rgba(255, 255, 255, 0.82) 24%,
+    rgba(255, 255, 255, 0.64) 37%, rgba(255, 255, 255, 0.44) 50%, rgba(255, 255, 255, 0.26) 63%,
+    rgba(255, 255, 255, 0.12) 76%, rgba(255, 255, 255, 0.04) 88%, rgba(255, 255, 255, 0) 100%);
+}
+@keyframes drift { from { transform: scale(1); } to { transform: scale(1.04); } }
+@media (prefers-reduced-motion: reduce) { .hero-strip img { animation: none; transform: none; transition: none; } }
+/* Opening: gym slideshow behind the heading, dark overlay for legibility */
+body::before { background: var(--black); }
+.masthead { position: relative; overflow: hidden; background: var(--black); color: var(--white); margin-bottom: calc(var(--sec) * 2); }
+.masthead .inner { position: relative; z-index: 2; min-height: clamp(36rem, 88vh, 52rem); justify-content: center; padding-block: 2rem clamp(3rem, 8vw, 5rem); }
+.masthead .topbar { position: absolute; top: 2rem; left: 0; right: 0; }
+.masthead .hero h1 em { color: rgba(255, 255, 255, 0.62); }
+.masthead .hero .lede { color: rgba(255, 255, 255, 0.86); }
+.masthead .btn { background: var(--white); color: var(--black); border-color: var(--white); }
+.masthead .btn:hover { background: var(--stone-tint); border-color: var(--stone-tint); }
+.masthead .hero-strip { position: absolute; inset: 0; z-index: 0; max-width: none; aspect-ratio: auto; margin: 0; background: var(--black); }
+.masthead .hero-strip::before {
+  inset: 0; height: auto; z-index: 1;
+  background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(10, 10, 10, 0.35), rgba(10, 10, 10, 0) 100%), linear-gradient(180deg, rgba(10, 10, 10, 0.66) 0%, rgba(10, 10, 10, 0.58) 45%, rgba(10, 10, 10, 0.62) 70%, rgba(10, 10, 10, 0.82) 100%);
+}
+/* Black facts bar under the opening photos */
+.facts-bar { position: relative; z-index: 2; background: var(--black); color: var(--white); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.14); }
+.facts-bar div { padding: clamp(1rem, 2.5vw, 1.5rem) 0.5rem; display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+.facts-bar div + div { border-left: 1px solid rgba(255, 255, 255, 0.14); }
+.facts-bar b { font-family: var(--display); font-weight: 500; font-size: clamp(1.05rem, 2.4vw, 1.5rem); letter-spacing: -0.02em; line-height: 1.2; }
+.facts-bar span { font-size: clamp(0.55rem, 1.4vw, 0.66rem); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255, 255, 255, 0.6); }
+.masthead .inner { min-height: clamp(32rem, 78vh, 46rem); }
+/* Smaller logo; heading block centred in the photo area */
+.masthead .wordmark b { font-size: 2rem; }
+.masthead .wordmark span { font-size: 1.25rem; }
+@media (max-width: 520px) { .masthead .wordmark b { font-size: 1.75rem; } .masthead .wordmark span { font-size: 1.1rem; } }
+.masthead .inner { padding-block: clamp(4rem, 9vw, 5.5rem); }
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="masthead" id="top">
+  <div class="inner">
+    <div class="topbar">
+      <a class="wordmark" href="#top" aria-label="Harnoa Health"><b>harnoa</b><span>health</span></a>
+    </div>
+
+    <div class="hero">
+      <h1>Two coaches, <em>one system</em></h1>
+      <p class="lede">A strength and conditioning coach and a nutrition coach, working together in the gym. One-to-one training, a programme written for you, and nutrition support to match. Choose a plan, pay every 4 weeks online and we'll book your first session.</p>
+      <div class="ctas">
+        <a class="btn" href="#plans">Get started</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-strip" aria-label="Photos of the gym">
+    <img class="on" src="images/main-floor-1024.webp" srcset="images/main-floor-640.webp 640w, images/main-floor-1024.webp 1024w" sizes="100vw" alt="The main gym floor" width="1024" height="616" fetchpriority="high">
+    <img data-src="images/platforms-1024.webp" data-srcset="images/platforms-640.webp 640w, images/platforms-1024.webp 1024w" sizes="100vw" alt="Squat racks and lifting platforms" width="1024" height="616">
+    <img data-src="images/free-weights-1024.webp" data-srcset="images/free-weights-640.webp 640w, images/free-weights-1024.webp 1024w" sizes="100vw" alt="Free weights" width="1024" height="616">
+    <img data-src="images/functional-1024.webp" data-srcset="images/functional-640.webp 640w, images/functional-1024.webp 1024w" sizes="100vw" alt="Functional training" width="1024" height="616">
+    <img data-src="images/cardio-1024.webp" data-srcset="images/cardio-640.webp 640w, images/cardio-1024.webp 1024w" sizes="100vw" alt="Cardio" width="1024" height="616">
+    <img data-src="images/pilates-1024.webp" data-srcset="images/pilates-640.webp 640w, images/pilates-1024.webp 1024w" sizes="100vw" alt="Reformer Pilates studio" width="1024" height="616">
+  </div>
+  <div class="facts-bar">
+    <div><b>1:1</b><span>Every session</span></div>
+    <div><b>From £35</b><span>Per session</span></div>
+    <div><b>4 weeks</b><span>Free nutrition</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="block" id="included">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <h2 class="title">Everything you need <em>to make progress</em></h2>
+        </div>
+        <p class="lede">Every plan is built around four things. They're what turn turning up to the gym into getting results from it.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="num">01</div>
+          <div class="body">
+            <h3>A coach beside you every session</h3>
+            <p>One-to-one, for the full hour. We correct your technique, choose your weights and keep you working at the right effort.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">02</div>
+          <div class="body">
+            <h3>A programme written for you</h3>
+            <p>Built from your assessment and your goal, with sets, reps and effort targets that move forward week by week.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">03</div>
+          <div class="body">
+            <h3>Nutrition that fits your life</h3>
+            <p>Calorie and protein targets, simple habits and weekly check-ins. No banned foods and no strict meal plans.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">04</div>
+          <div class="body">
+            <h3>Progress you can see</h3>
+            <p>Lifts, measurements and check-ins tracked over time, and reviewed with you so you always know where you stand.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-cta"><a class="btn" href="#plans">Get started</a></div>
+    </div>
+  </section>
+
+  <section class="block" id="coaches">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <h2 class="title">Meet <em>your coaches</em></h2>
+        </div>
+        <p class="lede">We coach side by side in the same gym and share notes on every client, so whichever of us you train with, your plan carries on.</p>
+      </div>
+
+      <div class="coaches">
+        <article class="coach">
+          <h3>Strength coach</h3>
+          <p class="label role">Strength &amp; conditioning lead</p>
+          <p>Focuses on building strength, power and fitness that carries over to everyday life and sport. Expect careful technique work, sensible progression week to week, and personalised sessions tailored to your goals.</p>
+          <ul class="helps">
+            <li>Learning the main lifts safely</li>
+            <li>Getting stronger and fitter</li>
+            <li>Training for a sport or event</li>
+          </ul>
+          <ul class="quals">
+            <li><span>Personal Training</span><span>Level 3</span></li>
+            <li><span>Strength &amp; Conditioning</span><span>Level 4 · studying</span></li>
+          </ul>
+        </article>
+        <article class="coach">
+          <h3>Nutrition coach</h3>
+          <p class="label role">Training &amp; nutrition lead</p>
+          <p>Coaches in the gym and runs our nutrition service. Helps you eat in a way that fuels your training and fits your week, with realistic goals, simple habits and regular check-ins to hit your daily targets.</p>
+          <ul class="helps">
+            <li>Losing fat without crash dieting</li>
+            <li>Eating enough to build muscle</li>
+            <li>Staying on track around work and weekends</li>
+          </ul>
+          <ul class="quals">
+            <li><span>Personal Training</span><span>Level 3</span></li>
+            <li><span>Nutrition</span><span>Level 4 · studying</span></li>
+          </ul>
+        </article>
+      </div>
+      <div class="section-cta"><a class="btn" href="#plans">Get started</a></div>
+    </div>
+  </section>
+
+  <section class="block" id="gym">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <h2 class="title">Where <em>you'll train</em></h2>
+        </div>
+        <p class="lede">We coach our clients at Snap Fitness [town]. It has a big strength floor with squat racks, lifting platforms and free weights, machines, cardio, a studio and a reformer Pilates studio, plus a recovery room, changing rooms and saunas.</p>
+      </div>
+      <div class="carousel" aria-roledescription="carousel" aria-label="Photos of the gym">
+        <div class="track" tabindex="0">
+          <figure class="slide" data-caption="Main gym floor">
+            <img src="images/main-floor-1024.webp" srcset="images/main-floor-640.webp 640w, images/main-floor-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Main gym floor" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Squat racks and lifting platforms">
+            <img src="images/platforms-1024.webp" srcset="images/platforms-640.webp 640w, images/platforms-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Squat racks and lifting platforms" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Free weights">
+            <img src="images/free-weights-1024.webp" srcset="images/free-weights-640.webp 640w, images/free-weights-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Free weights" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Functional training">
+            <img src="images/functional-1024.webp" srcset="images/functional-640.webp 640w, images/functional-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Functional training" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Machines">
+            <img src="images/gym-floor-1024.webp" srcset="images/gym-floor-640.webp 640w, images/gym-floor-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Machines" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Cardio">
+            <img src="images/cardio-1024.webp" srcset="images/cardio-640.webp 640w, images/cardio-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Cardio" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Entrance">
+            <img src="images/entrance-1024.webp" srcset="images/entrance-640.webp 640w, images/entrance-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Entrance" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Studio">
+            <img src="images/studio-1024.webp" srcset="images/studio-640.webp 640w, images/studio-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Studio" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Reformer Pilates studio">
+            <img src="images/pilates-1024.webp" srcset="images/pilates-640.webp 640w, images/pilates-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Reformer Pilates studio" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Recovery room">
+            <img src="images/recovery-1024.webp" srcset="images/recovery-640.webp 640w, images/recovery-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Recovery room" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Changing rooms">
+            <img src="images/changing-rooms-1024.webp" srcset="images/changing-rooms-640.webp 640w, images/changing-rooms-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Changing rooms" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+          <figure class="slide" data-caption="Saunas">
+            <img src="images/saunas-1024.webp" srcset="images/saunas-640.webp 640w, images/saunas-1024.webp 1024w" sizes="(min-width: 1120px) 1088px, 100vw" alt="Saunas" width="1024" height="617" loading="lazy" decoding="async">
+          </figure>
+        </div>
+        <button class="arrow prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+        <button class="arrow next" type="button" aria-label="Next photo"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg></button>
+        <div class="car-bar">
+          <span class="car-caption" aria-live="polite">Main gym floor</span>
+          <span class="car-count"><b>1</b> / 12</span>
+        </div>
+      </div>
+      <div class="section-cta"><a class="btn" href="#plans">Get started</a></div>
+    </div>
+  </section>
+
+  <section class="band" id="plans">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <h2 class="title">Choose your plan <em>and pay online</em></h2>
+        </div>
+        <p class="lede">Training is paid every 4 weeks, from £35 a session. Pick training, training with nutrition, or nutrition on its own. Use the toggle to choose how many sessions you want each week. We'll then send you your onboarding forms and book your first session.</p>
+      </div>
+
+      <div class="prices tri">
+          <article class="price" data-card="train">
+            <div class="price-top"><h4>Personal training</h4></div>
+            <div class="seg-wrap">
+              <span class="seg-label">Sessions per week</span>
+              <div class="seg" role="group" aria-label="Sessions per week">
+                <button type="button" data-n="1" aria-pressed="false">1×</button>
+                <button type="button" data-n="2" aria-pressed="true">2×</button>
+                <button type="button" data-n="3" aria-pressed="false">3×</button>
+              </div>
+            </div>
+            <div class="amount"><s class="was" data-was>£320</s><b data-price>£300</b><span>every 4 weeks</span></div>
+            <p class="save" data-save>Save £20</p>
+            <ul>
+              <li data-sessions>8 one-to-one sessions every 4 weeks</li>
+              <li>A programme written for you</li>
+              <li>Progress tracked every session</li>
+            </ul>
+            <p class="per" data-per>£37.50 per session</p>
+            <a class="btn" data-plan="train-2" href="#plans">Get started</a>
+          </article>
+          <article class="price featured" data-card="combo">
+            <div class="price-top"><h4>Training + nutrition</h4></div>
+            <div class="seg-wrap">
+              <span class="seg-label">Sessions per week</span>
+              <div class="seg" role="group" aria-label="Sessions per week">
+                <button type="button" data-n="1" aria-pressed="false">1×</button>
+                <button type="button" data-n="2" aria-pressed="true">2×</button>
+                <button type="button" data-n="3" aria-pressed="false">3×</button>
+              </div>
+            </div>
+            <div class="amount"><s class="was" data-was>£320</s><b data-price>£300</b><span>every 4 weeks</span></div>
+            <p class="save" data-save>Save £20</p>
+            <ul>
+              <li data-sessions>8 one-to-one sessions every 4 weeks</li>
+              <li>A programme written for you</li>
+              <li>Free personalised nutrition plan for your first 4 weeks</li>
+              <li>Weekly nutrition check-ins</li>
+              <li>After free 4 weeks, nutrition offered at £150 (25% off), or stop with no charge</li>
+            </ul>
+            <p class="per">First 4 weeks of nutrition free (worth £200)</p>
+            <a class="btn" data-plan="combo-2" href="#plans">Get started</a>
+          </article>
+          <article class="price">
+            <div class="price-top"><h4>Nutrition</h4></div>
+            <div class="seg-wrap seg-static">
+              <span class="seg-label">No training needed</span>
+              <p class="seg-note">For people who train on their own</p>
+            </div>
+            <div class="amount"><b>£200</b><span>every 4 weeks</span></div>
+            <ul>
+              <li>Personalised nutrition plan</li>
+              <li>Calorie and protein targets set for you</li>
+              <li>Weekly check-ins and adjustments</li>
+              <li>Message support between check-ins</li>
+            </ul>
+            <p class="per">Available on its own</p>
+            <a class="btn" data-plan="nutrition" href="#plans">Get started</a>
+          </article>
+      </div>
+
+      <div class="assure">
+        <div>
+          <h3>Secure payment</h3>
+          <p>Payments are taken securely online. You'll get a receipt by email straight away.</p>
+        </div>
+        <div>
+          <h3>No joining fee</h3>
+          <p>Plans roll on every 4 weeks. Give us notice before your next payment date to stop.</p>
+        </div>
+        <div>
+          <h3>Cancellations</h3>
+          <p>Move or cancel a session with at least 24 hours' notice. Later than that, the session is charged.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="after">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <h2 class="title">What happens <em>next</em></h2>
+        </div>
+        <p class="lede">Most clients are training within a week of signing up.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <div class="num">01</div>
+          <div class="body">
+            <h3>Payment confirmed</h3>
+            <p>You'll get a receipt by email straight away.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="num">02</div>
+          <div class="body">
+            <h3>We send you your onboarding forms</h3>
+            <p>We'll email you a link to six short forms covering your details, consent, terms and privacy, so your first session can be spent training rather than on paperwork.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="num">03</div>
+          <div class="body">
+            <h3>We book your first session</h3>
+            <p>Once your forms are in, your coach messages you to agree your regular training times.</p>
+          </div>
+        </li>
+        <li class="step">
+          <div class="num">04</div>
+          <div class="body">
+            <h3>Assessment and your programme</h3>
+            <p>Your first session starts with a look at how you move and your starting strength. If you've added nutrition, we review a typical week of eating. Then you get your programme and we start training.</p>
+          </div>
+        </li>
+      </ol>
+      <div class="section-cta"><a class="btn" href="#plans">Get started</a></div>
+    </div>
+  </section>
+
+  <section class="block" id="faq">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <h2 class="title">Good <em>to know</em></h2>
+        </div>
+        <p class="lede">Anything else? Message us before you buy and we'll answer it.</p>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>I'm a complete beginner. Is this for me?</summary>
+          <p>Yes. Many clients start with little or no gym experience. We teach every movement from scratch and progress at a pace that suits you.</p>
+        </details>
+        <details>
+          <summary>Which plan should I choose?</summary>
+          <p>Choose how many sessions a week fits your schedule and goal. Twice a week suits most people. If you want your eating to match your training, a training and nutrition plan gives you your first 4 weeks of nutrition coaching free. After that you can keep it for £150 every 4 weeks.</p>
+        </details>
+        <details>
+          <summary>Which of you will I train with?</summary>
+          <p>Either of us can coach you. We'll match you to the best fit for your goal, and because we share notes, you never start over if you see the other coach.</p>
+        </details>
+        <details>
+          <summary>Can I do nutrition coaching without personal training?</summary>
+          <p>Yes. The personalised nutrition plan is £200 every 4 weeks on its own. If you train with us, your first 4 weeks of nutrition are free, and after that it's £150 every 4 weeks on top of your training.</p>
+        </details>
+        <details>
+          <summary>Will I have to follow a strict meal plan?</summary>
+          <p>No. We set targets and build habits around the food you already eat, so it fits your life and lasts.</p>
+        </details>
+        <details>
+          <summary>How do I stop or pause my plan?</summary>
+          <p>Let us know before your next payment date and we'll stop or pause it. There's no exit fee.</p>
+        </details>
+        <details>
+          <summary>What if I miss a session?</summary>
+          <p>Give us at least 24 hours' notice and we'll move it. Sessions missed with less notice are charged.</p>
+        </details>
+        <details>
+          <summary>Is gym entry included?</summary>
+          <p>Gym entry is not included unless stated. We'll let you know what you need before your first session.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="inner">
+      <div class="closing">
+        <h2 class="title">Pick your plan. <em>We'll do the rest.</em></h2>
+        <p class="lede">Pay online, complete your forms and we'll be in touch to book your first session.</p>
+        <div class="ctas">
+          <a class="btn" href="#plans">Get started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="inner">
+    <a class="wordmark" href="#top" aria-label="Harnoa Health"><b>harnoa</b><span>health</span></a>
+    <nav class="links" aria-label="Footer">
+      <a href="#plans">Plans</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <p class="contact-line">Questions before you buy? Email [your email] or message [@yourhandle] on Instagram.</p>
+  </div>
+</footer>
+
+<script>
+/* Paste each plan's payment link (for example a Stripe Payment Link) between the quotes. */
+var PAYMENT_LINKS = {
+  "train-1": "",
+  "train-2": "",
+  "train-3": "",
+  "combo-1": "",
+  "combo-2": "",
+  "combo-3": "",
+  "nutrition": ""
+};
+var PRICES = { train: { 1: 160, 2: 300, 3: 420 }, combo: { 1: 160, 2: 300, 3: 420 } };
+var PER_SESSION = { 1: "£40", 2: "£37.50", 3: "£35" };
+var FULL_PRICE = { 1: 160, 2: 320, 3: 480 };
+
+function setLink(a, key) {
+  a.setAttribute("data-plan", key);
+  var url = PAYMENT_LINKS[key];
+  if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+  else { a.href = "#plans"; a.removeAttribute("target"); }
+}
+
+document.querySelectorAll("[data-card]").forEach(function (card) {
+  var kind = card.getAttribute("data-card");
+  var buttons = card.querySelectorAll(".seg button");
+  function choose(n) {
+    buttons.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-n") === String(n) ? "true" : "false"); });
+    card.querySelector("[data-price]").textContent = "£" + PRICES[kind][n];
+    var was = card.querySelector("[data-was]"), save = card.querySelector("[data-save]");
+    var diff = FULL_PRICE[n] - PRICES[kind][n];
+    was.textContent = "£" + FULL_PRICE[n];
+    was.hidden = diff <= 0;
+    save.textContent = diff > 0 ? "Save £" + diff + " every 4 weeks" : "Standard price";
+    save.classList.toggle("is-none", diff <= 0);
+    var per = card.querySelector("[data-per]");
+    if (per) per.textContent = PER_SESSION[n] + " per session";
+    card.querySelector("[data-sessions]").textContent = (n * 4) + " one-to-one sessions every 4 weeks";
+    setLink(card.querySelector("[data-plan]"), kind + "-" + n);
+  }
+  buttons.forEach(function (b) { b.addEventListener("click", function () { choose(Number(b.getAttribute("data-n"))); }); });
+  choose(2);
+});
+setLink(document.querySelector('[data-plan="nutrition"]'), "nutrition");
+
+(function () {
+  var car = document.querySelector(".carousel");
+  if (!car) return;
+  var track = car.querySelector(".track");
+  var slides = car.querySelectorAll(".slide");
+  var prev = car.querySelector(".prev"), next = car.querySelector(".next");
+  var cap = car.querySelector(".car-caption"), num = car.querySelector(".car-count b");
+  var current = 0;
+  function go(i) {
+    i = Math.max(0, Math.min(slides.length - 1, i));
+    track.scrollTo({ left: i * track.clientWidth });
+  }
+  function update() {
+    var i = Math.round(track.scrollLeft / track.clientWidth);
+    if (i === current && cap.textContent) { /* still refresh buttons */ }
+    current = i;
+    cap.textContent = slides[i].getAttribute("data-caption");
+    num.textContent = i + 1;
+    prev.disabled = i === 0;
+    next.disabled = i === slides.length - 1;
+  }
+  prev.addEventListener("click", function () { go(current - 1); });
+  next.addEventListener("click", function () { go(current + 1); });
+  track.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowLeft") { e.preventDefault(); go(current - 1); }
+    if (e.key === "ArrowRight") { e.preventDefault(); go(current + 1); }
+  });
+  var t;
+  track.addEventListener("scroll", function () { clearTimeout(t); t = setTimeout(update, 60); });
+  window.addEventListener("resize", function () { track.scrollLeft = current * track.clientWidth; });
+  update();
+})();
+
+(function () {
+  var strip = document.querySelector(".hero-strip");
+  if (!strip) return;
+  var imgs = Array.prototype.slice.call(strip.querySelectorAll("img"));
+  if (imgs.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  function start() {
+    imgs.forEach(function (img) {
+      if (img.dataset.srcset) { img.srcset = img.dataset.srcset; img.src = img.dataset.src; }
+    });
+    var i = 0;
+    setInterval(function () {
+      var n = (i + 1) % imgs.length, tries = 0;
+      while (!(imgs[n].complete && imgs[n].naturalWidth) && tries < imgs.length) { n = (n + 1) % imgs.length; tries++; }
+      if (n === i) return;
+      imgs[i].classList.remove("on");
+      imgs[n].classList.add("on");
+      i = n;
+    }, 5000);
+  }
+  if (document.readyState === "complete") start(); else window.addEventListener("load", start);
+})();
+</script>
+</body>
+</html>

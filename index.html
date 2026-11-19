@@ -107,7 +107,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 /* Sections */
 /* --sec: half the space between sections. Each Get started button sits 2 x --sec below its text and 2 x --sec above the next heading. */
 :root { --sec: clamp(1.5rem, 3.5vw, 2.25rem); }
-section.block .inner { padding-block: var(--sec); }
+section.block .inner { padding-block: calc(var(--sec) * 1.85); }
 section.block:has(+ .band) .inner { padding-bottom: calc(var(--sec) * 2); }
 .band + section.block .inner { padding-top: calc(var(--sec) * 2); }
 main > section.block:last-child .inner { padding-bottom: calc(var(--sec) * 3); }
@@ -361,6 +361,29 @@ body::before { background: var(--black); }
 .masthead .wordmark span { font-size: 1.25rem; }
 @media (max-width: 520px) { .masthead .wordmark b { font-size: 1.75rem; } .masthead .wordmark span { font-size: 1.1rem; } }
 .masthead .inner { padding-block: clamp(4rem, 9vw, 5.5rem); }
+/* Final logo artwork (white, transparent) */
+.wordmark { display: inline-flex; align-items: center; line-height: 0; }
+.wordmark img { display: block; height: 1.3rem; width: auto; max-width: 100%; }
+.masthead .wordmark img { height: 1.5rem; }
+@media (max-width: 520px) { .masthead .wordmark img { height: 1.3rem; } .wordmark img { height: 1.15rem; } }
+.hero-strip img:not([src]), .hero-strip img[src=""] { visibility: hidden; }
+/* Phone: bigger opening heading, split over two lines */
+@media (max-width: 520px) {
+  .hero h1 { white-space: normal; font-size: clamp(2.4rem, 11vw, 3rem); line-height: 1.05; }
+  .hero h1 em { display: block; }
+}
+#consultation .head { margin-bottom: 0; }
+#consultation .inner { padding-bottom: calc(var(--sec) * 2.5); }
+#consultation .section-cta { margin-top: calc(var(--sec) * 1.25); }
+/* Welcome story */
+.story { max-width: 40rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1.1rem; color: var(--grey); font-size: 1.05rem; line-height: 1.7; }
+.story p { margin: 0; }
+.story-intro { margin-bottom: clamp(2.25rem, 5vw, 3.25rem); }
+.story-title { margin: 0; font-family: var(--body); font-weight: 400; font-size: 1.05rem; letter-spacing: 0; line-height: 1.7; color: var(--grey); }
+.story-after { margin-top: clamp(2rem, 5vw, 3rem); }
+.story .story-close { color: var(--black); font-weight: 600; padding-top: 1.1rem; border-top: 1px solid var(--rule); }
+.period { margin-top: -0.5rem; font-size: 0.9rem; color: var(--on-dark-muted); }
+.price.featured .period { color: var(--grey); }
 </style>
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
@@ -368,24 +391,24 @@ body::before { background: var(--black); }
 <header class="masthead" id="top">
   <div class="inner">
     <div class="topbar">
-      <a class="wordmark" href="#top" aria-label="Harnoa Health"><b>harnoa</b><span>health</span></a>
+      <a class="wordmark" href="#top"><img src="images/harnoa-health-logo-white.png" alt="Harnoa Health" width="841" height="137"></a>
     </div>
 
     <div class="hero">
       <h1>Two coaches, <em>one system</em></h1>
-      <p class="lede">A strength and conditioning coach and a nutrition coach, working together in the gym. One-to-one training, a programme written for you, and nutrition support to match. Choose a plan, pay every 4 weeks online and we'll book your first session.</p>
+      <p class="lede">1 to 1 personal training and nutrition coaching. Two coaches working together to deliver a bespoke programme to meet your health goals.</p>
       <div class="ctas">
         <a class="btn" href="#plans">Get started</a>
       </div>
     </div>
   </div>
   <div class="hero-strip" aria-label="Photos of the gym">
-    <img class="on" src="images/main-floor-1024.webp" srcset="images/main-floor-640.webp 640w, images/main-floor-1024.webp 1024w" sizes="100vw" alt="The main gym floor" width="1024" height="616" fetchpriority="high">
-    <img data-src="images/platforms-1024.webp" data-srcset="images/platforms-640.webp 640w, images/platforms-1024.webp 1024w" sizes="100vw" alt="Squat racks and lifting platforms" width="1024" height="616">
-    <img data-src="images/free-weights-1024.webp" data-srcset="images/free-weights-640.webp 640w, images/free-weights-1024.webp 1024w" sizes="100vw" alt="Free weights" width="1024" height="616">
-    <img data-src="images/functional-1024.webp" data-srcset="images/functional-640.webp 640w, images/functional-1024.webp 1024w" sizes="100vw" alt="Functional training" width="1024" height="616">
-    <img data-src="images/cardio-1024.webp" data-srcset="images/cardio-640.webp 640w, images/cardio-1024.webp 1024w" sizes="100vw" alt="Cardio" width="1024" height="616">
-    <img data-src="images/pilates-1024.webp" data-srcset="images/pilates-640.webp 640w, images/pilates-1024.webp 1024w" sizes="100vw" alt="Reformer Pilates studio" width="1024" height="616">
+    <img class="on" src="images/main-floor-1024.webp" srcset="images/main-floor-640.webp 640w, images/main-floor-1024.webp 1024w" sizes="100vw" alt="" width="1024" height="616" fetchpriority="high">
+    <img data-src="images/platforms-1024.webp" data-srcset="images/platforms-640.webp 640w, images/platforms-1024.webp 1024w" sizes="100vw" alt="" width="1024" height="616">
+    <img data-src="images/free-weights-1024.webp" data-srcset="images/free-weights-640.webp 640w, images/free-weights-1024.webp 1024w" sizes="100vw" alt="" width="1024" height="616">
+    <img data-src="images/functional-1024.webp" data-srcset="images/functional-640.webp 640w, images/functional-1024.webp 1024w" sizes="100vw" alt="" width="1024" height="616">
+    <img data-src="images/cardio-1024.webp" data-srcset="images/cardio-640.webp 640w, images/cardio-1024.webp 1024w" sizes="100vw" alt="" width="1024" height="616">
+    <img data-src="images/pilates-1024.webp" data-srcset="images/pilates-640.webp 640w, images/pilates-1024.webp 1024w" sizes="100vw" alt="" width="1024" height="616">
   </div>
   <div class="facts-bar">
     <div><b>1:1</b><span>Every session</span></div>
@@ -396,89 +419,44 @@ body::before { background: var(--black); }
 
 <main>
 
-  <section class="block" id="included">
-    <div class="inner">
-      <div class="head">
-        <div>
-          <h2 class="title">Everything you need <em>to make progress</em></h2>
-        </div>
-        <p class="lede">Every plan is built around four things. They're what turn turning up to the gym into getting results from it.</p>
-      </div>
-
-      <div class="pillars">
-        <div class="pillar">
-          <div class="num">01</div>
-          <div class="body">
-            <h3>A coach beside you every session</h3>
-            <p>One-to-one, for the full hour. We correct your technique, choose your weights and keep you working at the right effort.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="num">02</div>
-          <div class="body">
-            <h3>A programme written for you</h3>
-            <p>Built from your assessment and your goal, with sets, reps and effort targets that move forward week by week.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="num">03</div>
-          <div class="body">
-            <h3>Nutrition that fits your life</h3>
-            <p>Calorie and protein targets, simple habits and weekly check-ins. No banned foods and no strict meal plans.</p>
-          </div>
-        </div>
-        <div class="pillar">
-          <div class="num">04</div>
-          <div class="body">
-            <h3>Progress you can see</h3>
-            <p>Lifts, measurements and check-ins tracked over time, and reviewed with you so you always know where you stand.</p>
-          </div>
-        </div>
-      </div>
-      <div class="section-cta"><a class="btn" href="#plans">Get started</a></div>
-    </div>
-  </section>
-
   <section class="block" id="coaches">
     <div class="inner">
       <div class="head">
         <div>
           <h2 class="title">Meet <em>your coaches</em></h2>
         </div>
-        <p class="lede">We coach side by side in the same gym and share notes on every client, so whichever of us you train with, your plan carries on.</p>
+      </div>
+      <div class="story story-intro">
+        <h3 class="story-title">Welcome to Harnoa Health</h3>
+        <p>We’re Harry and Noah, the coaches at Harnoa Health. We are 20-year-old twin brothers (non-identical, see pictures) and we live in Wimborne.</p>
+        <p>We both studied A Level Physical Education at Exeter College and have since qualified as Level 3 personal training instructors.</p>
       </div>
 
       <div class="coaches">
         <article class="coach">
-          <h3>Strength coach</h3>
-          <p class="label role">Strength &amp; conditioning lead</p>
-          <p>Focuses on building strength, power and fitness that carries over to everyday life and sport. Expect careful technique work, sensible progression week to week, and personalised sessions tailored to your goals.</p>
-          <ul class="helps">
-            <li>Learning the main lifts safely</li>
-            <li>Getting stronger and fitter</li>
-            <li>Training for a sport or event</li>
-          </ul>
+          <h3>Harry</h3>
+          <p class="label role">Strength &amp; conditioning coach</p>
+          <p>Harry is continuing his studies with a Level 4 strength and conditioning qualification, due to be completed early next year. This will allow Harry to work with clients who have more specialist training requirements.</p>
           <ul class="quals">
             <li><span>Personal Training</span><span>Level 3</span></li>
             <li><span>Strength &amp; Conditioning</span><span>Level 4 · studying</span></li>
           </ul>
         </article>
         <article class="coach">
-          <h3>Nutrition coach</h3>
-          <p class="label role">Training &amp; nutrition lead</p>
-          <p>Coaches in the gym and runs our nutrition service. Helps you eat in a way that fuels your training and fits your week, with realistic goals, simple habits and regular check-ins to hit your daily targets.</p>
-          <ul class="helps">
-            <li>Losing fat without crash dieting</li>
-            <li>Eating enough to build muscle</li>
-            <li>Staying on track around work and weekends</li>
-          </ul>
+          <h3>Noah</h3>
+          <p class="label role">Training &amp; nutrition coach</p>
+          <p>Noah is currently studying for his Level 4 nutrition qualification, which he will complete this year, and he will be managing our nutrition programmes.</p>
           <ul class="quals">
             <li><span>Personal Training</span><span>Level 3</span></li>
             <li><span>Nutrition</span><span>Level 4 · studying</span></li>
           </ul>
         </article>
       </div>
-      <div class="section-cta"><a class="btn" href="#plans">Get started</a></div>
+
+      <div class="story story-after">
+        <p>In an ever-changing industry, we are committed to continuing our education and keeping up to date with advances in fitness and nutrition, to ensure we offer our clients the best available health advice.</p>
+        <p>We believe that a healthy lifestyle has two components, regular exercise and balanced nutrition, and that is what we coach at Harnoa Health.</p>
+      </div>
     </div>
   </section>
 
@@ -488,7 +466,7 @@ body::before { background: var(--black); }
         <div>
           <h2 class="title">Where <em>you'll train</em></h2>
         </div>
-        <p class="lede">We coach our clients at Snap Fitness [town]. It has a big strength floor with squat racks, lifting platforms and free weights, machines, cardio, a studio and a reformer Pilates studio, plus a recovery room, changing rooms and saunas.</p>
+        <p class="lede">All our personal training sessions are carried out at Snap Fitness in Ferndown. This facility provides all the equipment needed for your sessions, including weights, resistance machines, fitness and Reformer Pilates studios, plus a recovery room, changing rooms and saunas.</p>
       </div>
       <div class="carousel" aria-roledescription="carousel" aria-label="Photos of the gym">
         <div class="track" tabindex="0">
@@ -536,7 +514,106 @@ body::before { background: var(--black); }
           <span class="car-count"><b>1</b> / 12</span>
         </div>
       </div>
-      <div class="section-cta"><a class="btn" href="#plans">Get started</a></div>
+    </div>
+  </section>
+
+  <section class="block" id="training">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <h2 class="title">Personal training <em>built for you</em></h2>
+        </div>
+        <p class="lede">Your PT package is designed to provide you with the guidance, structure and accountability you need to achieve your fitness goals and create long-lasting results.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="num">01</div>
+          <div class="body">
+            <h3>Our free consultation</h3>
+            <p>An opportunity for us to get to know each other and visit our brand new training facility.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">02</div>
+          <div class="body">
+            <h3>Your training</h3>
+            <p>A bespoke programme built around you, with all aspects agreed in advance to ensure every session is purposeful, with an achievable goal.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">03</div>
+          <div class="body">
+            <h3>Progress checks</h3>
+            <p>It’s important that you make consistent progress with your training, and we’ll be there to support you by delivering a programme that develops with you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="nutrition">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <h2 class="title"><em>Personalised</em> nutrition coaching</h2>
+        </div>
+        <p class="lede">Your nutrition is planned around your goals, dietary requirements and training. Everything you need is in the Harnoa Health Nutrition app.</p>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="num">01</div>
+          <div class="body">
+            <h3>A plan tailored for you</h3>
+            <p>We plan your daily calories, macronutrients and micronutrients and build your weekly meal plan around them, adapted to your allergies, intolerances and diet so you’ll only ever see recipes that suit you.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">02</div>
+          <div class="body">
+            <h3>Nutrition you can trust</h3>
+            <p>Every recipe shows calories and macros for one serving, worked out from the UK government’s official food composition data.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">03</div>
+          <div class="body">
+            <h3>Weekly check-ins</h3>
+            <p>Every week we review your progress and adjust your targets and meal plan, so we can help you keep on track.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">04</div>
+          <div class="body">
+            <h3>Personalised shopping list</h3>
+            <p>Your week’s ingredients are calculated for you, so you have a shopping list adapted to your nutrition plan.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="num">05</div>
+          <div class="body">
+            <h3>A pantry that saves you money</h3>
+            <p>Log the foods you already have at home, so you only buy what you actually need.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="consultation">
+    <div class="inner">
+      <div class="head">
+        <div>
+          <h2 class="title">Free <em>consultation</em></h2>
+        </div>
+        <p class="lede">Before starting any of our programmes, we'd like to meet you in person at Snap Fitness Ferndown to take you through your initial consultation before your training begins.</p>
+      </div>
+      <div class="section-cta">
+        <a class="btn" id="whatsapp-btn" href="#consultation" target="_blank" rel="noopener">
+          Book consultation
+        </a>
+      </div>
     </div>
   </section>
 
@@ -544,9 +621,9 @@ body::before { background: var(--black); }
     <div class="inner">
       <div class="head">
         <div>
-          <h2 class="title">Choose your plan <em>and pay online</em></h2>
+          <h2 class="title">Choose your <em>programme</em></h2>
         </div>
-        <p class="lede">Training is paid every 4 weeks, from £35 a session. Pick training, training with nutrition, or nutrition on its own. Use the toggle to choose how many sessions you want each week. We'll then send you your onboarding forms and book your first session.</p>
+        <p class="lede">Personal Training, Personal Training with Nutrition, or just Nutrition. Use the toggle to choose the number of training sessions you would like per week (1, 2 or 3), and we’ll send you our onboarding forms and book your first session.</p>
       </div>
 
       <div class="prices tri">
@@ -563,12 +640,12 @@ body::before { background: var(--black); }
             <div class="amount"><s class="was" data-was>£320</s><b data-price>£300</b><span>every 4 weeks</span></div>
             <p class="save" data-save>Save £20</p>
             <ul>
-              <li data-sessions>8 one-to-one sessions every 4 weeks</li>
-              <li>A programme written for you</li>
-              <li>Progress tracked every session</li>
+              <li data-sessions>2 one-to-one sessions per week for 4 weeks</li>
+              <li>A programme tailored to meet your goals</li>
+              <li>Progress tracked and reviewed every session</li>
             </ul>
             <p class="per" data-per>£37.50 per session</p>
-            <a class="btn" data-plan="train-2" href="#plans">Get started</a>
+            <a class="btn" data-plan="train-2" href="#plans">Join now</a>
           </article>
           <article class="price featured" data-card="combo">
             <div class="price-top"><h4>Training + nutrition</h4></div>
@@ -583,14 +660,15 @@ body::before { background: var(--black); }
             <div class="amount"><s class="was" data-was>£320</s><b data-price>£300</b><span>every 4 weeks</span></div>
             <p class="save" data-save>Save £20</p>
             <ul>
-              <li data-sessions>8 one-to-one sessions every 4 weeks</li>
-              <li>A programme written for you</li>
+              <li data-sessions>2 one-to-one sessions per week for 4 weeks</li>
+              <li>A programme tailored to meet your goals</li>
+              <li>Progress tracked and reviewed every session</li>
               <li>Free personalised nutrition plan for your first 4 weeks</li>
               <li>Weekly nutrition check-ins</li>
-              <li>After free 4 weeks, nutrition offered at £150 (25% off), or stop with no charge</li>
+              <li>After free 4 weeks, nutrition offered at £120 (33% off), or stop with no charge</li>
             </ul>
-            <p class="per">First 4 weeks of nutrition free (worth £200)</p>
-            <a class="btn" data-plan="combo-2" href="#plans">Get started</a>
+            <p class="per">First 4 weeks of nutrition free (worth £180)</p>
+            <a class="btn" data-plan="combo-2" href="#plans">Join now</a>
           </article>
           <article class="price">
             <div class="price-top"><h4>Nutrition</h4></div>
@@ -598,7 +676,8 @@ body::before { background: var(--black); }
               <span class="seg-label">No training needed</span>
               <p class="seg-note">For people who train on their own</p>
             </div>
-            <div class="amount"><b>£200</b><span>every 4 weeks</span></div>
+            <div class="amount"><b>£180</b></div>
+            <p class="period">every 4 weeks</p>
             <ul>
               <li>Personalised nutrition plan</li>
               <li>Calorie and protein targets set for you</li>
@@ -606,7 +685,7 @@ body::before { background: var(--black); }
               <li>Message support between check-ins</li>
             </ul>
             <p class="per">Available on its own</p>
-            <a class="btn" data-plan="nutrition" href="#plans">Get started</a>
+            <a class="btn" data-plan="nutrition" href="#plans">Join now</a>
           </article>
       </div>
 
@@ -647,7 +726,7 @@ body::before { background: var(--black); }
           <div class="num">02</div>
           <div class="body">
             <h3>We send you your onboarding forms</h3>
-            <p>We'll email you a link to six short forms covering your details, consent, terms and privacy, so your first session can be spent training rather than on paperwork.</p>
+            <p>We'll email you a link to forms covering your details, consent, terms and privacy, so your first session can be spent training rather than on paperwork.</p>
           </div>
         </li>
         <li class="step">
@@ -665,7 +744,6 @@ body::before { background: var(--black); }
           </div>
         </li>
       </ol>
-      <div class="section-cta"><a class="btn" href="#plans">Get started</a></div>
     </div>
   </section>
 
@@ -684,7 +762,7 @@ body::before { background: var(--black); }
         </details>
         <details>
           <summary>Which plan should I choose?</summary>
-          <p>Choose how many sessions a week fits your schedule and goal. Twice a week suits most people. If you want your eating to match your training, a training and nutrition plan gives you your first 4 weeks of nutrition coaching free. After that you can keep it for £150 every 4 weeks.</p>
+          <p>Choose how many sessions a week fits your schedule and goal. Twice a week suits most people. If you want your eating to match your training, a training and nutrition plan gives you your first 4 weeks of nutrition coaching free. After that you can keep it for £120 every 4 weeks.</p>
         </details>
         <details>
           <summary>Which of you will I train with?</summary>
@@ -692,7 +770,7 @@ body::before { background: var(--black); }
         </details>
         <details>
           <summary>Can I do nutrition coaching without personal training?</summary>
-          <p>Yes. The personalised nutrition plan is £200 every 4 weeks on its own. If you train with us, your first 4 weeks of nutrition are free, and after that it's £150 every 4 weeks on top of your training.</p>
+          <p>Yes. The personalised nutrition plan is £180 every 4 weeks on its own. If you train with us, your first 4 weeks of nutrition are free, and after that it's £120 every 4 weeks on top of your training.</p>
         </details>
         <details>
           <summary>Will I have to follow a strict meal plan?</summary>
@@ -714,22 +792,11 @@ body::before { background: var(--black); }
     </div>
   </section>
 
-  <section class="block">
-    <div class="inner">
-      <div class="closing">
-        <h2 class="title">Pick your plan. <em>We'll do the rest.</em></h2>
-        <p class="lede">Pay online, complete your forms and we'll be in touch to book your first session.</p>
-        <div class="ctas">
-          <a class="btn" href="#plans">Get started</a>
-        </div>
-      </div>
-    </div>
-  </section>
 </main>
 
 <footer>
   <div class="inner">
-    <a class="wordmark" href="#top" aria-label="Harnoa Health"><b>harnoa</b><span>health</span></a>
+    <a class="wordmark" href="#top"><img src="images/harnoa-health-logo-white.png" alt="Harnoa Health" width="841" height="137"></a>
     <nav class="links" aria-label="Footer">
       <a href="#plans">Plans</a>
       <a href="#faq">FAQ</a>
@@ -741,13 +808,13 @@ body::before { background: var(--black); }
 <script>
 /* Paste each plan's payment link (for example a Stripe Payment Link) between the quotes. */
 var PAYMENT_LINKS = {
-  "train-1": "",
-  "train-2": "",
-  "train-3": "",
-  "combo-1": "",
-  "combo-2": "",
-  "combo-3": "",
-  "nutrition": ""
+  "train-1": "https://buy.stripe.com/fZu3cwaKj6xHeLIdF3cEw00",
+  "train-2": "https://buy.stripe.com/00wfZicSre09gTQbwVcEw01",
+  "train-3": "https://buy.stripe.com/aFafZi8CbbS11YW30pcEw02",
+  "combo-1": "https://buy.stripe.com/5kQ00k5pZbS11YW44tcEw03",
+  "combo-2": "https://buy.stripe.com/00w00k19Je090USeJ7cEw04",
+  "combo-3": "https://buy.stripe.com/4gMcN63hRf4d3307gFcEw05",
+  "nutrition": "https://buy.stripe.com/3cIcN605FbS1fPM6cBcEw09"
 };
 var PRICES = { train: { 1: 160, 2: 300, 3: 420 }, combo: { 1: 160, 2: 300, 3: 420 } };
 var PER_SESSION = { 1: "£40", 2: "£37.50", 3: "£35" };
@@ -774,7 +841,7 @@ document.querySelectorAll("[data-card]").forEach(function (card) {
     save.classList.toggle("is-none", diff <= 0);
     var per = card.querySelector("[data-per]");
     if (per) per.textContent = PER_SESSION[n] + " per session";
-    card.querySelector("[data-sessions]").textContent = (n * 4) + " one-to-one sessions every 4 weeks";
+    card.querySelector("[data-sessions]").textContent = n + (n === 1 ? " one-to-one session" : " one-to-one sessions") + " per week for 4 weeks";
     setLink(card.querySelector("[data-plan]"), kind + "-" + n);
   }
   buttons.forEach(function (b) { b.addEventListener("click", function () { choose(Number(b.getAttribute("data-n"))); }); });
@@ -787,21 +854,33 @@ setLink(document.querySelector('[data-plan="nutrition"]'), "nutrition");
   if (!car) return;
   var track = car.querySelector(".track");
   var slides = car.querySelectorAll(".slide");
+  var n = slides.length;
   var prev = car.querySelector(".prev"), next = car.querySelector(".next");
   var cap = car.querySelector(".car-caption"), num = car.querySelector(".car-count b");
   var current = 0;
+  // A copy of the first photo after the last one lets 12 -> 1 slide forwards (and 1 -> 12 slide backwards).
+  var clone = slides[0].cloneNode(true);
+  clone.setAttribute("aria-hidden", "true");
+  clone.removeAttribute("data-caption");
+  track.appendChild(clone);
+  function w() { return track.clientWidth; }
+  function jump(x) { track.scrollTo({ left: x, behavior: "instant" }); }
   function go(i) {
-    i = Math.max(0, Math.min(slides.length - 1, i));
-    track.scrollTo({ left: i * track.clientWidth });
+    if (i >= n) {                       // last -> first: slide on to the copy of photo 1
+      track.scrollTo({ left: n * w(), behavior: "smooth" });
+    } else if (i < 0) {                 // first -> last: sit on the copy, then slide back to the last photo
+      jump(n * w());
+      requestAnimationFrame(function () { track.scrollTo({ left: (n - 1) * w(), behavior: "smooth" }); });
+    } else {
+      track.scrollTo({ left: i * w(), behavior: "smooth" });
+    }
   }
   function update() {
-    var i = Math.round(track.scrollLeft / track.clientWidth);
-    if (i === current && cap.textContent) { /* still refresh buttons */ }
+    var i = Math.round(track.scrollLeft / w());
+    if (i >= n) { jump(0); i = 0; }    // landed on the copy: swap to the real photo 1 (looks identical)
     current = i;
     cap.textContent = slides[i].getAttribute("data-caption");
     num.textContent = i + 1;
-    prev.disabled = i === 0;
-    next.disabled = i === slides.length - 1;
   }
   prev.addEventListener("click", function () { go(current - 1); });
   next.addEventListener("click", function () { go(current + 1); });
@@ -810,8 +889,8 @@ setLink(document.querySelector('[data-plan="nutrition"]'), "nutrition");
     if (e.key === "ArrowRight") { e.preventDefault(); go(current + 1); }
   });
   var t;
-  track.addEventListener("scroll", function () { clearTimeout(t); t = setTimeout(update, 60); });
-  window.addEventListener("resize", function () { track.scrollLeft = current * track.clientWidth; });
+  track.addEventListener("scroll", function () { clearTimeout(t); t = setTimeout(update, 80); });
+  window.addEventListener("resize", function () { jump(current * w()); });
   update();
 })();
 
@@ -835,6 +914,13 @@ setLink(document.querySelector('[data-plan="nutrition"]'), "nutrition");
     }, 5000);
   }
   if (document.readyState === "complete") start(); else window.addEventListener("load", start);
+})();
+/* WhatsApp for the free consultation: add the number in international format, digits only (e.g. 447700900123). */
+var WHATSAPP_NUMBER = "447434711842";
+var WHATSAPP_MESSAGE = "Hi, I'd like to book my free consultation with Harnoa Health.";
+(function () {
+  var b = document.getElementById("whatsapp-btn");
+  if (b && WHATSAPP_NUMBER) b.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_MESSAGE);
 })();
 </script>
 </body>

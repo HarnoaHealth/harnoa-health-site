@@ -373,8 +373,6 @@ body::before { background: var(--black); }
   .hero h1 em { display: block; }
 }
 #consultation .head { margin-bottom: 0; }
-#consultation .inner { padding-bottom: calc(var(--sec) * 2.5); }
-#consultation .section-cta { margin-top: calc(var(--sec) * 1.25); }
 /* Welcome story */
 .story { max-width: 40rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1.1rem; color: var(--grey); font-size: 1.05rem; line-height: 1.7; }
 .story p { margin: 0; }
@@ -608,11 +606,6 @@ body::before { background: var(--black); }
           <h2 class="title">Free <em>consultation</em></h2>
         </div>
         <p class="lede">Before starting any of our programmes, we'd like to meet you in person at Snap Fitness Ferndown to take you through your initial consultation before your training begins.</p>
-      </div>
-      <div class="section-cta">
-        <a class="btn" id="whatsapp-btn" href="#consultation" target="_blank" rel="noopener">
-          Book consultation
-        </a>
       </div>
     </div>
   </section>
@@ -914,13 +907,6 @@ setLink(document.querySelector('[data-plan="nutrition"]'), "nutrition");
     }, 5000);
   }
   if (document.readyState === "complete") start(); else window.addEventListener("load", start);
-})();
-/* WhatsApp for the free consultation: add the number in international format, digits only (e.g. 447700900123). */
-var WHATSAPP_NUMBER = "447434711842";
-var WHATSAPP_MESSAGE = "Hi, I'd like to book my free consultation with Harnoa Health.";
-(function () {
-  var b = document.getElementById("whatsapp-btn");
-  if (b && WHATSAPP_NUMBER) b.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_MESSAGE);
 })();
 </script>
 </body>

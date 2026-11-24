@@ -815,7 +815,7 @@ function planName(key) {
 function setLink(a, key) {
   a.setAttribute("data-plan", key);
   var subject = "Booking a free consultation: " + planName(key);
-  var body = "Hi Harnoa Health,\n\nI'd like to book a free consultation. The plan I'm interested in: " + planName(key) + ".\n\nName:\nPhone number:\nDays and times that suit me:\n\nThanks";
+  var body = "Hi Harnoa Health,\n\nI'd like to book a free consultation. The plan I'm interested in: " + planName(key) + ".\n\nName:\nPhone number:\nBest way to contact me (WhatsApp, phone call or email):\nDays and times that suit me:\n\nThanks";
   a.href = "mailto:" + BOOK_EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
   a.removeAttribute("target");
 }
